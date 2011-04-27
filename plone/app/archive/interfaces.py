@@ -2,13 +2,19 @@ from zope import interface
 
 class IContentArchive(interface.Interface):
     def archiveContent(content):
-        """Archive a given content item"""
+        """Archive a given content item.
+
+        Returns the id of the archived content.
+
+        """
 
     def restoreContent(id):
         """Restore a piece of archived content in it's original location.
 
         id is the internal content-archive id as returned by
         listArchivedContent.
+
+        Returns the restored content.
 
         """
 
@@ -32,5 +38,7 @@ class IContentArchive(interface.Interface):
 
         Permanently delete archived content. Filters are the same as for
         listing archived content.
+
+        Returns how many archived items were cleared.
 
         """
