@@ -17,12 +17,13 @@ class IContentArchive(interface.Interface):
 
         Returns a sequence of items sorted by date descending.
         Items are dictionaries with id, Title, parentUID, date and user
-        keys, where the latter reflect the user and date of archiving.
+        keys, where the latter reflect the user and datetime.datetime of
+        archiving.
 
         Currently supported filters:
 
           * parentUID: UID of parent where the content originally lived
-          * before:    date to limit listing to.
+          * before:    datetime.datetime to limit listing to.
 
         """
 
