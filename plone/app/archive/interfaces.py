@@ -1,10 +1,10 @@
 from zope import interface
 
 class IContentArchive(interface.Interface):
-    def archiveContent(self, content):
+    def archiveContent(content):
         """Archive a given content item"""
 
-    def restoreContent(self, id):
+    def restoreContent(id):
         """Restore a piece of archived content in it's original location.
 
         id is the internal content-archive id as returned by
@@ -12,7 +12,7 @@ class IContentArchive(interface.Interface):
 
         """
 
-    def listArchivedContent(self, **filters):
+    def listArchivedContent(**filters):
         """List archived content
 
         Returns a sequence of items sorted by date descending.
@@ -27,7 +27,7 @@ class IContentArchive(interface.Interface):
 
         """
 
-    def clearArchive(self, **filters):
+    def clearArchive(**filters):
         """Permanently remove archived content
 
         Permanently delete archived content. Filters are the same as for
