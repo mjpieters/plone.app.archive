@@ -60,6 +60,9 @@ class ContentArchive(object):
             ann[ARCHIVE_KEY] = ArchivedContent()
         return ann[ARCHIVE_KEY]
 
+    def __len__(self):
+        return len(self._archive)
+
     def archiveContent(self, content):
         return self._archive.archiveContent(content)
 
