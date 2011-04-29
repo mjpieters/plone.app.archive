@@ -3,6 +3,8 @@ import os
 
 version = '1.0'
 
+tests_require = ('collective.testcaselayer', 'Products.PloneTestCase')
+
 setup(name='plone.app.archive',
       version=version,
       description="Archive Plone content",
@@ -34,6 +36,8 @@ setup(name='plone.app.archive',
           'zope.component',
           'zope.interface',
       ],
+      tests_require=tests_require,
+      extras_require=dict(tests=tests_require),
       entry_points="""
       # -*- Entry points: -*-
 

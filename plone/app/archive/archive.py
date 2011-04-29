@@ -76,6 +76,10 @@ class ContentArchive(object):
         return self._archive.clearArchive(**filters)
 
 
+def _now():
+    return datetime.now(pytz.UTC)
+
+
 def _datetimeToIndex(dt):
     """Convert a datetime.datetime to an index integer
 
@@ -171,7 +175,7 @@ class ArchivedContent(Persistent):
             title=content.Title(),
             parent=parent.UID(),
             user=(uf_path, user_id),
-            timestamp = datetime.now(pytz.UTC),
+            timestamp = _now(),
             item=aq_base(content),
         )
 
@@ -221,14 +225,14 @@ class ArchivedContent(Persistent):
         if 'parentUID' in filters:
             ids = self._byparent.get(filters['parentUID'])
             if not ids:
-                return
+                return []
         if 'before' in filters:
             before = _datetimeToIndex(filters['before'])
             values = self._bydate.values(None, before)
             values = BTrees.IIBTree.multiunion(values)
             ids = BTrees.IIBTree.intersection(ids, values)
             if not ids:
-                return
+                return []
         if ids is None:
             ids = self._items.keys()
 
