@@ -81,7 +81,7 @@ def _datetimeToIndex(dt):
     """
     if dt.tzinfo:
         dt = dt.astimezone(pytz.UTC)
-    return (dt.year * 12 + dt.month) * 31 + dt.day
+    return dt.toordinal() # Don't you love the stdlib?
 
 
 class ArchivedContent(Persistent):
