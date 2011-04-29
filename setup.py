@@ -26,6 +26,13 @@ setup(name='plone.app.archive',
       install_requires=[
           'setuptools',
           # -*- Extra requirements: -*-
+          'Acquisition',
+          'Products.CMFCore',
+          'ZODB3',
+          'pytz',
+          'zope.annotation',
+          'zope.component',
+          'zope.interface',
       ],
       entry_points="""
       # -*- Entry points: -*-
