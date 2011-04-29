@@ -1,6 +1,9 @@
 from zope import interface
 
 class IContentArchive(interface.Interface):
+    def __len__():
+        """Return how many items have been archived."""
+
     def archiveContent(content):
         """Archive a given content item.
 
