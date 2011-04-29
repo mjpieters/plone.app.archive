@@ -232,6 +232,9 @@ class ArchivedContent(Persistent):
             ids = self._items.keys()
 
         # Gather results and sort
+        # Possible optimisation: the _bydate index is already sorted
+        # so it could be used to return a sorted set where we have no
+        # filters used.
         result = []
         for id_ in ids:
             entry = self._items[id_].copy()
