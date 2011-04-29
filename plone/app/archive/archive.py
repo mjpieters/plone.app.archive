@@ -76,14 +76,12 @@ class ContentArchive(object):
 def _datetimeToIndex(dt):
     """Convert a datetime.datetime to an index integer
 
-    We index on a per-minute resolution.
+    We index on a per-day resolution.
 
     """
     if dt.tzinfo:
         dt = dt.astimezone(pytz.UTC)
-    index = (dt.year * 12 + dt.month) * 31 + dt.day
-    index = (index * 24 + dt.hour) * 60 + dt.minute    
-    return index
+    return (dt.year * 12 + dt.month) * 31 + dt.day
 
 
 class ArchivedContent(Persistent):
@@ -232,9 +230,6 @@ class ArchivedContent(Persistent):
             ids = self._items.keys()
 
         # Gather results and sort
-        # Possible optimisation: the _bydate index is already sorted
-        # so it could be used to return a sorted set where we have no
-        # filters used.
         result = []
         for id_ in ids:
             entry = self._items[id_].copy()
