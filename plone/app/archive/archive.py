@@ -166,8 +166,6 @@ class ArchivedContent(Persistent):
         user_id = user.getId()
         uf_path = aq_parent(aq_parent(user)).getPhysicalPath()
 
-        parent.manage_delObjects(content.getId())
-
         entry = dict(
             originalId=content.getId(),
             title=content.Title(),
@@ -177,12 +175,14 @@ class ArchivedContent(Persistent):
             item=aq_base(content),
         )
 
+        parent.manage_delObjects(content.getId())
+
         return self._index(entry)
 
     def restoreContent(self, id_):
         entry = self._items.get(id_)
         if entry is None:
-            return
+            raise KeyError('No such archived content: %d' % id_)
 
         self._unindex(entry)
 
