@@ -71,6 +71,7 @@ class IntegrationTests(ptc.PloneTestCase):
     def test_listArchivedContent(self):
         archive = self._getArchive()
         self.testnow = datetime(1995, 8, 20, 21, 5, 3)
+        doc = self.folder.document1.aq_base
         archiveid = archive.archiveContent(self.folder.document1)
         archived = archive.listArchivedContent()
         self.assertEqual(len(archive), len(archived))
@@ -82,6 +83,7 @@ class IntegrationTests(ptc.PloneTestCase):
             parent=self.folder.UID(),
             user=(('', 'plone', 'acl_users'), ptc.default_user),
             timestamp=self.testnow,
+            item=doc,
         )
         self.assertEqual(archived[0], expected)
 

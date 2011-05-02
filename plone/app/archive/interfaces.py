@@ -25,8 +25,9 @@ class IContentArchive(interface.Interface):
         """List archived content
 
         Returns a sequence of items sorted by date descending.
-        Items are dictionaries with id, originalId, title, parent, timestamp
-        and user keys, where the latter reflect the datetime.datetime of
+        Items are dictionaries with id, originalId, title, parent, item,
+        timestamp and user keys, where the latter 3 reflect the archived
+        item (without an acquisition context), the datetime.datetime of
         archiving and what user archived the content.
 
         Currently supported filters:

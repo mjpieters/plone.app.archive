@@ -240,7 +240,6 @@ class ArchivedContent(Persistent):
         result = []
         for id_ in ids:
             entry = self._items[id_].copy()
-            del entry['item']
             result.append(entry)
         result.sort(key=operator.itemgetter('timestamp'))
         result.reverse()
