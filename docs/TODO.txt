@@ -4,3 +4,7 @@ TODO
 * Documentation
 * Additional parameter for restoreContent: alternative parent location to 
   restore to.
+* Plone UI
+  * Archive button in folder view
+  * Archive action in document actions list
+  * Archive view on folders listing restorable content
