@@ -2,8 +2,9 @@ TODO
 ====
 
 * Documentation
-* Additional parameter for restoreContent: alternative parent location to 
-  restore to.
+* Events, passing along the entry object (can be manipulated!):
+  * ContentArchived
+  * BeforeContentRestore
 * Plone UI
   * Archive button in folder view
   * Archive action in document actions list
